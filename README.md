@@ -142,6 +142,3 @@ This project is licensed under the **MIT License** – see the [LICENSE](LICENSE
 
 ---
 
-✅ This version includes a **Mermaid architecture diagram** that GitHub automatically renders, making it look professional.
-
-Do you want me to also add **screenshots / demo GIFs** section (UI + prediction graphs) in the README so recruiters can see visuals at first glance?
