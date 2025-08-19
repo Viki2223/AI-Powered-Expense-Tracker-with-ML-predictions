@@ -1,23 +1,29 @@
 services:
+  # ----------------------
+  # Flask Backend Service
+  # ----------------------
   - type: web
-    name: flask-backend
+    name: expense-tracker-backend
     env: python
-    plan: free
-    buildCommand: |
-      pip install --upgrade pip setuptools wheel
-      pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.11
+      - key: FLASK_ENV
+        value: production
+    autoDeploy: true
 
+  # ----------------------
+  # React Frontend Service
+  # ----------------------
   - type: web
-    name: react-frontend
+    name: expense-tracker-frontend
     env: node
-    plan: free
     buildCommand: npm install && npm run build
-    startCommand: npm start
+    startCommand: npm run start
     envVars:
       - key: NODE_VERSION
         value: 18
-git add render.yaml
+    staticPublishPath: build
+    autoDeploy: true
