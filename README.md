@@ -1,16 +1,3 @@
-Perfect 👍 I'll prepare the **complete `README.md` file** for your project, including:
-
-* Clean formatting
-* Badges for tech stack
-* Live demo links (Heroku + Render)
-* Features, Tech stack, Installation, API endpoints
-* Deployment info
-* Contribution & License
-* **Professional system architecture diagram** (so your repo looks premium on GitHub)
-
-Here’s the **final `README.md`** ⬇️
-
-````markdown
 # 🤖 AI-Powered Expense Tracker with ML Predictions
 
 <div align="center">
