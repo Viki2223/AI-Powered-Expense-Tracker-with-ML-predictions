@@ -1,5 +1,7 @@
 services:
-  # Flask Backend
+  # ----------------------
+  # Flask Backend Service
+  # ----------------------
   - type: web
     name: expense-tracker-backend
     env: python
@@ -10,8 +12,11 @@ services:
         value: 3.11
       - key: FLASK_ENV
         value: production
+    autoDeploy: true
 
-  # React Frontend
+  # ----------------------
+  # React Frontend Service
+  # ----------------------
   - type: web
     name: expense-tracker-frontend
     env: node
@@ -21,7 +26,10 @@ services:
       - key: NODE_VERSION
         value: 18
     staticPublishPath: build
+    autoDeploy: true
+
     routes:
+      # Forward all /api/* requests to backend
       - type: rewrite
         source: /api/*
         destination: https://expense-tracker-backend.onrender.com/api/$1
