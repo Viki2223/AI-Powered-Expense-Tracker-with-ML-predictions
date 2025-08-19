@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="AI-Powered Expense Tracker with predictive analytics" />
+    <title>AI Expense Tracker</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { 
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: #333;
+      }
+      .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+      .card { 
+        background: white; 
+        border-radius: 12px; 
+        padding: 24px; 
+        margin: 16px 0; 
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease;
+      }
+      .card:hover { transform: translateY(-2px); }
+      .form-group { margin-bottom: 16px; }
+      .form-control { 
+        width: 100%; 
+        padding: 12px 16px; 
+        border: 2px solid #e2e8f0; 
+        border-radius: 8px; 
+        font-size: 16px;
+        transition: border-color 0.2s ease;
+      }
+      .form-control:focus { 
+        border-color: #667eea; 
+        outline: none; 
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+      .btn { 
+        padding: 12px 24px; 
+        border: none; 
+        border-radius: 8px; 
+        font-size: 16px; 
+        font-weight: 600;
+        cursor: pointer; 
+        transition: all 0.2s ease;
+        display: inline-block;
+        text-decoration: none;
+      }
+      .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+      .btn-primary { background: #667eea; color: white; }
+      .btn-primary:hover:not(:disabled) { background: #5a67d8; transform: translateY(-1px); }
+      .btn-success { background: #48bb78; color: white; }
+      .btn-success:hover:not(:disabled) { background: #38a169; }
+      .btn-secondary { background: #a0aec0; color: white; }
+      .btn-secondary:hover:not(:disabled) { background: #718096; }
+      .btn-danger { background: #e53e3e; color: white; }
+      .btn-danger:hover:not(:disabled) { background: #c53030; }
+      .expense-item { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+        padding: 16px; 
+        border-bottom: 1px solid #e2e8f0; 
+        transition: background-color 0.2s ease;
+      }
+      .expense-item:hover { background-color: #f7fafc; }
+      .expense-item:last-child { border-bottom: none; }
+      .prediction-card { 
+        background: linear-gradient(135deg, #4299e1, #3182ce); 
+        color: white; 
+        text-align: center;
+      }
+      .grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+        gap: 20px; 
+      }
+      .alert {
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin: 16px 0;
+        font-weight: 500;
+      }
+      .alert-error { background: #fed7d7; color: #9b2c2c; border: 1px solid #feb2b2; }
+      .alert-success { background: #c6f6d5; color: #2f855a; border: 1px solid #9ae6b4; }
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .modal-content {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        max-width: 400px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+      @media (max-width: 768px) {
+        .grid { grid-template-columns: 1fr; }
+        .container { padding: 12px; }
+        .expense-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
+

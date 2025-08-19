@@ -1,0 +1,108 @@
+{
+  "name": "ai-expense-tracker",
+  "version": "1.0.0",
+  "description": "AI-powered expense tracking application with predictive analytics and dual database architecture",
+  "main": "index.js",
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "url": "https://your-portfolio.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/yourusername/ai-expense-tracker#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/ai-expense-tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/ai-expense-tracker/issues"
+  },
+  "keywords": [
+    "expense-tracker",
+    "artificial-intelligence",
+    "machine-learning",
+    "react",
+    "flask",
+    "mysql",
+    "mongodb",
+    "aws",
+    "docker",
+    "jwt-authentication",
+    "financial-app",
+    "predictive-analytics",
+    "data-visualization",
+    "full-stack",
+    "microservices"
+  ],
+  "scripts": {
+    "preinstall": "echo '🚀 Installing AI Expense Tracker dependencies...'",
+    "postinstall": "echo '✅ All dependencies installed successfully!'",
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "install:backend": "echo '📦 Installing backend dependencies...' && cd backend && pip install -r requirements.txt",
+    "install:frontend": "echo '📦 Installing frontend dependencies...' && cd frontend && npm install",
+    "dev": "echo '🔧 Starting development environment...' && docker-compose up --build",
+    "dev:logs": "docker-compose logs -f",
+    "dev:down": "docker-compose down",
+    "prod": "echo '🚀 Starting production environment...' && docker-compose -f docker-compose-prod.yml up -d --build",
+    "prod:logs": "docker-compose -f docker-compose-prod.yml logs -f",
+    "prod:down": "docker-compose -f docker-compose-prod.yml down",
+    "start:backend": "cd backend && python app.py",
+    "start:frontend": "cd frontend && npm start",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "echo '🏗️ Backend build completed (no build step required for Flask)'",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": "cd backend && python -m pytest tests/ -v",
+    "test:frontend": "cd frontend && npm test -- --watchAll=false",
+    "test:coverage": "npm run test:backend:coverage && npm run test:frontend:coverage",
+    "test:backend:coverage": "cd backend && python -m pytest tests/ --cov=. --cov-report=html",
+    "test:frontend:coverage": "cd frontend && npm test -- --coverage --watchAll=false",
+    "lint": "npm run lint:backend && npm run lint:frontend",
+    "lint:backend": "cd backend && flake8 . --max-line-length=120 --exclude=venv,__pycache__",
+    "lint:frontend": "cd frontend && npx eslint src/",
+    "format": "npm run format:backend && npm run format:frontend",
+    "format:backend": "cd backend && black . --line-length=120",
+    "format:frontend": "cd frontend && npx prettier --write src/",
+    "clean": "npm run clean:docker && npm run clean:cache",
+    "clean:docker": "docker-compose down -v && docker system prune -f",
+    "clean:cache": "cd frontend && rm -rf node_modules package-lock.json && cd ../backend && rm -rf __pycache__ .pytest_cache",
+    "deploy:aws": "echo '☁️ Deploying to AWS...' && chmod +x deploy.sh && ./deploy.sh production",
+    "deploy:local": "npm run prod",
+    "health:check": "curl -f http://localhost:5000/api/health || echo '❌ Backend health check failed'",
+    "logs:backend": "docker-compose logs -f backend",
+    "logs:frontend": "docker-compose logs -f frontend",
+    "logs:db": "docker-compose logs -f mysql mongo",
+    "db:reset": "docker-compose down -v && docker-compose up -d mysql mongo",
+    "db:backup": "echo '💾 Creating database backup...' && mkdir -p backups && docker exec expense_mysql mysqldump -u expense_user -ppassword123 expense_tracker > backups/mysql_backup_$(date +%Y%m%d_%H%M%S).sql",
+    "db:seed": "python scripts/seed_data.py",
+    "security:scan": "echo '🔒 Running security scan...' && cd frontend && npm audit && cd ../backend && pip-audit",
+    "docs:generate": "echo '📚 Generating documentation...' && cd backend && python -m pydoc -w .",
+    "performance:test": "echo '⚡ Running performance tests...' && cd frontend && npm run build && npx lighthouse http://localhost:3000 --output=html --output-path=./performance-report.html"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0",
+    "python": ">=3.9.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.5",
+    "eslint": "^8.57.0"
+  },
+  "workspaces": [
+    "frontend"
+  ],
+  "config": {
+    "frontend_port": "3000",
+    "backend_port": "5000",
+    "mysql_port": "3306",
+    "mongo_port": "27017"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/yourusername"
+  },
+  "private": true
+}
+
