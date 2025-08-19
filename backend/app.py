@@ -390,3 +390,8 @@ if __name__ == '__main__':
     print(f"🌍 Environment: {config_name}")
     
     app.run(host='0.0.0.0', port=port, debug=debug)
+
+# Production configuration
+if __name__ != '__main__':
+    # This runs when deployed (not in development)
+    create_tables()
